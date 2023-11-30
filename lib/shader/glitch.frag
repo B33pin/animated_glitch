@@ -39,11 +39,14 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float time = floor(uTime * uSpeed * 60.0);
     vec2 uv = fragCoord.xy / uResolution.xy;
     
-    // Copy original color
-    vec3 outColor = texture(uChannel0, uv).rgb;
+   // Copy original color
+    vec4 texColor = texture(uChannel0, uv);
+    vec3 outColor = texColor.rgb;
+    float alpha = texColor.a; // Get alpha from the texture
+
     float randomChance = random2d(vec2(time, 9545.0));
     bool shouldGlitch = randomChance <= uChance / MAX_CHANCE; 
-    
+
     if (shouldGlitch) {
 
         // Randomly offset slices horizontally
@@ -80,7 +83,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         }
     }
   
-    fragColor = vec4(outColor, 1.0);
+    fragColor = vec4(outColor, alpha);
  
 }
 

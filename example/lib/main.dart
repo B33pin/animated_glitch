@@ -397,14 +397,9 @@ class _AnimatedGlitchWithShaderTabState
           speed: _speed,
           distortionLevel: _distortionLevel,
           colorChannelLevel: _colorChannelLevel,
-          child: ColorFiltered(
-            colorFilter: const ColorFilter.mode(Colors.blue, BlendMode.color),
-            child: Image.asset(
-              'assets/cyberpunk.jpg',
-              fit: BoxFit.cover,
-              height: double.infinity,
-              width: double.infinity,
-            ),
+          child: Text(
+            'hello',
+            style: TextStyle(fontSize: 30, color: Colors.white),
           ),
         ),
       ),
